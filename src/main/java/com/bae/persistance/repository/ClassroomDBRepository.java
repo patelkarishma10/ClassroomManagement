@@ -37,7 +37,7 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	public String createClassroom(String classroom) {
 		Classroom classroomCreated = this.json.getObjectForJSON(classroom, Classroom.class);
 		em.persist(classroomCreated);
-		return "{\"message\": \"account has been sucessfully added\"}";
+		return "{\"message\": \"classroom has been sucessfully added\"}";
 	}
 
 }
