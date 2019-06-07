@@ -1,5 +1,6 @@
 package com.bae.persistance.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
@@ -29,6 +30,14 @@ public class ClassroomDBRepository implements ClassroomRepository {
 		TypedQuery<Classroom> query = em.createQuery("SELECT c FROM Classroom c", Classroom.class);
 		Collection<Classroom> classrooms = query.getResultList();
 		return json.getJSONForObject(classrooms);
+	}
+
+	@Transactional(REQUIRED)
+	@Override
+	public String createClassroom(String classroom) {
+		Classroom classroomCreated = this.json.getObjectForJSON(classroom, Classroom.class);
+		em.persist(classroomCreated);
+		return "{\"message\": \"account has been sucessfully added\"}";
 	}
 
 }
