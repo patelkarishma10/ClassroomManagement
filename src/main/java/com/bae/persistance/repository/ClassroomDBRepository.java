@@ -9,7 +9,6 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -52,11 +51,26 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	@Transactional(REQUIRED)
 	@Override
 	public String updateClassroom(Long id, String classroom) {
-		Classroom accountCreated = this.json.getObjectForJSON(classroom, Classroom.class);
-		Query q1 = em.createQuery(String.format("UPDATE CLASSROOM a SET a.trainer = '%s' WHERE a.id = %s",
-				accountCreated.getTrainer(), id));
+		// Classroom accountCreated = this.json.getObjectForJSON(classroom,
+		// Classroom.class);
+		// Query q1 = em.createQuery(String.format("UPDATE CLASSROOM a SET a.trainer =
+		// '%s' WHERE a.id = %s",
+		// accountCreated.getTrainer(), id));
+		// q1.executeUpdate();
 
-		q1.executeUpdate();
+		Classroom upClass = json.getObjectForJSON(classroom, Classroom.class);
+		Classroom oldClass = em.find(Classroom.class, id);
+		if (oldClass != null) {
+			oldClass.setTrainer(upClass.getTrainer());
+
+			em.persist(oldClass);
+		}
+
+		// Classroom ClassroomFound = em.find(Classroom.class, id);
+		// em.remove(ClassroomFound);
+		// Classroom classroomCreated = this.json.getObjectForJSON(classroom,
+		// Classroom.class);
+		// em.persist(classroomCreated);
 		return "{\"message\": \"account has been sucessfully updated\"}";
 	}
 
