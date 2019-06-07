@@ -6,6 +6,11 @@
       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd" bean-discovery-mode="all">
       
       <!-- <alternatives>
-        <class>com.qa.service.repository.AccountMapRepository</class>
+        <class>com.bae.persistance.repository.ClassroomMapRepository</class>
+    </alternatives> -->
+    
+    
+          <!-- <alternatives>
+        <class>com.bae.persistance.repository.TraineeMapRepository</class>
     </alternatives> -->
 </beans>
