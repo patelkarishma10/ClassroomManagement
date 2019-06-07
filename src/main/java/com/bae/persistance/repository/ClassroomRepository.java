@@ -9,6 +9,7 @@ public interface ClassroomRepository {
 	String getAllClassrooms();
 
 	// U
+	String updateClassroom(Long id, String classroom);
 
 	// D
 	String deleteClassroom(Long id);

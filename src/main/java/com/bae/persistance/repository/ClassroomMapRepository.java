@@ -28,11 +28,6 @@ public class ClassroomMapRepository implements ClassroomRepository {
 		return Constants.createSuccess;
 	}
 
-	// @Override
-	// public String deleteClassroom(Long id) {
-
-	// }
-
 	public Map<Long, Classroom> getClassroomMap() {
 		return classroomMap;
 	}
@@ -41,6 +36,13 @@ public class ClassroomMapRepository implements ClassroomRepository {
 	public String deleteClassroom(Long id) {
 		classroomMap.remove(id);
 		return Constants.deleteSuccess;
+	}
+
+	@Override
+	public String updateClassroom(Long id, String classroom) {
+		Classroom classroomToUpdate = util.getObjectForJSON(classroom, Classroom.class);
+		classroomMap.put(id, classroomToUpdate);
+		return Constants.updateSuccess;
 	}
 
 }
