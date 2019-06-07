@@ -11,5 +11,5 @@ public interface ClassroomRepository {
 	// U
 
 	// D
-
+	String deleteClassroom(Long id);
 }
