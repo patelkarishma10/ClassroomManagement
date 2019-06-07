@@ -40,10 +40,11 @@ public class ClassroomDBRepository implements ClassroomRepository {
 		return "{\"message\": \"classroom has been sucessfully added\"}";
 	}
 
+	@Transactional(REQUIRED)
 	@Override
 	public String deleteClassroom(Long id) {
-		Classroom accountFound = em.find(Classroom.class, id);
-		em.remove(accountFound);
+		Classroom ClassroomFound = em.find(Classroom.class, id);
+		em.remove(ClassroomFound);
 		return "{\"message\": \"classroom has been sucessfully deleted\"}";
 	}
 
