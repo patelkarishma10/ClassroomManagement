@@ -3,6 +3,7 @@ package com.bae.mapTests;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.bae.persistance.repository.ClassroomMapRepository;
@@ -53,9 +54,19 @@ public class ClassroomTest {
 		cmr.createClassroom(testClass1);
 		String testClass2 = util.getJSONForObject(class2);
 		cmr.createClassroom(testClass2);
-		System.out.println(cmr.getClassroomMap());
+		System.out.println(util.getJSONForObject(cmr.getClassroomMap()));
 		cmr.deleteClassroom((long) 2);
 		// assertEquals(false, cmr.getClassroomMap().get(2));
-		System.out.println(cmr.getClassroomMap());
+		System.out.println(util.getJSONForObject(cmr.getClassroomMap()));
+	}
+
+	@Ignore
+	@Test
+	public void updateClassroomTest() {
+		cmr.getClassroomMap().put((long) 1, class1);
+		cmr.updateClassroom((long) 1, "{\"id\":1,\"trainer\":\"Matt\"");
+		System.out.println(util.getJSONForObject(cmr.getClassroomMap()));
+		// assertEquals("Matt", cmr.getClassroomMap().get(1).getTrainer());
+
 	}
 }
