@@ -26,7 +26,7 @@ public class TraineeDBRepository implements TraineeRepository {
 
 	@Override
 	public String getAllTrainees() {
-		TypedQuery<Trainee> query = em.createQuery("SELECT t FROM TRAINEE t", Trainee.class);
+		TypedQuery<Trainee> query = em.createQuery("SELECT t FROM Trainee t", Trainee.class);
 		Collection<Trainee> trainees = query.getResultList();
 		return json.getJSONForObject(trainees);
 	}
