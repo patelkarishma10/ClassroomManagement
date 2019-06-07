@@ -24,4 +24,9 @@ public class ClassroomServiceImpl implements ClassroomService {
 		return repo.deleteClassroom(id);
 	}
 
+	@Override
+	public String updateClassroom(Long id, String classroom) {
+		return repo.updateClassroom(id, classroom);
+	}
+
 }

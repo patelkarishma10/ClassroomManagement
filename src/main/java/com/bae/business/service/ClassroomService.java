@@ -10,7 +10,7 @@ public interface ClassroomService {
 	String getAllClassrooms();
 
 	// U
-
+	String updateClassroom(Long id, String classroom);
 	// D
 
 	String deleteClassroom(Long id);
