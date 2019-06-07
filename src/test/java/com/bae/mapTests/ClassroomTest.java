@@ -29,8 +29,19 @@ public class ClassroomTest {
 
 	@Test
 	public void getAllClassroomsWithAnObjectInMap() {
-		cmr.getClassroomMap().put((long) 1, "Matt Hunt");
-		assertEquals("{\"1\":\"Matt Hunt\"}", cmr.getAllClassrooms());
+		cmr.getClassroomMap().put((long) 1, class1);
 
+		System.out.println(cmr.getAllClassrooms());
+		assertEquals("{\"1\":{\"id\":1,\"trainer\":\"Matt Hunt\"}}", cmr.getAllClassrooms());
+
+	}
+
+	@Test
+	public void createClassroomTest() {
+
+		String testClass = util.getJSONForObject(class1);
+		cmr.createClassroom(testClass);
+		assertEquals(cmr.createClassroom(testClass), "successful creation");
+		assertEquals(cmr.getClassroomMap().size(), 1);
 	}
 }
